@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-
+from selenium.webdriver import Chrome
 
 class DriverFactory:
 
@@ -19,7 +19,7 @@ class DriverContainer:
         )
 
     @property
-    def driver(self) -> webdriver:
+    def driver(self) -> Chrome:
         return self._driver
 
 
