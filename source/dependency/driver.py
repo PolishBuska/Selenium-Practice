@@ -2,11 +2,12 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver import Chrome
 
+
 class DriverFactory:
 
     @staticmethod
     def create_driver(driver_class, service: Service, options) -> webdriver:
-        return driver_class(service=service, options=options)
+        return driver_class(service=service, options=options, keep_alive=True)
 
 
 class DriverContainer:

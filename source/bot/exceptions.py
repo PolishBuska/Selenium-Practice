@@ -1,0 +1,3 @@
+
+class BookingBotError(Exception):
+    ...
