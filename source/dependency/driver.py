@@ -40,7 +40,10 @@ class ChromeDriver(DriverContainer):
 
 
 def options_factory():
-    return webdriver.ChromeOptions()
+
+    options = webdriver.ChromeOptions()
+
+    return options
 
 
 def service_factory(path) -> Service:

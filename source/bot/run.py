@@ -1,5 +1,5 @@
 from source.dependency.driver import get_container
-from source.bot.booking.booking import get_booking
+from source.bot.booking.kufar import get_booking
 
 from config import get_config
 
@@ -17,13 +17,20 @@ if __name__ == "__main__":
     config = get_config()
     booking_service = get_booking(driver)
     with booking_service as bot:
-        bot.land_first_page(config.base_url)
-        res = bot.select_currency("USD")
-        logger.info(f"{res.status, res.message}")
+        parent_window = bot.land_first_page(config.base_url)
+        print(parent_window)
         bot.is_closed_popup()
-        print('about to')
-        bot.select_location('Minsk')
-        inp = input()
-        bot.is_closed_popup()
-        print('selected')
+        bot.find('Гитары')
+
+        bot.click_search()
+        time.sleep(1)
+
+        prices = bot.find_prices()
+
+        for price in prices:
+            print(price.text)
+
+        time.sleep(1000)
+
+
 
